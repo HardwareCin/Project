@@ -7,9 +7,10 @@ module div(A, B, DtoC, CtoD, High, Low, Clock, Reset, DivZero);
   integer Counter;
   reg sgA;
   reg sgB;
-  integer quo;
-  integer rem;
-  reg [31:0] Bb,Aa;
+  reg [31:0] quo;
+  reg [31:0] rem;
+  reg [31:0] Bb;
+  reg [31:0] Aa;
   output reg DtoC;
   output reg [31:0] High;
   output reg [31:0] Low;
@@ -50,8 +51,8 @@ module div(A, B, DtoC, CtoD, High, Low, Clock, Reset, DivZero);
 		else begin
 			rem=rem<<1;
 			rem[0]=Aa[Counter];//not sure
-			if(rem>=Bb)begin
-				rem=rem-Bb;
+			if(rem>=Aa)begin
+				rem=rem-Aa;
 				quo[Counter]=1;
 			end
 			Counter=Counter-1;	
