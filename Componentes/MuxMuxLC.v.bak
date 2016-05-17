@@ -1,0 +1,19 @@
+module MuxMuxLC(MuxLC, full, half, single, saida)
+
+input[1:0] MuxLC;
+input[31:0] full;
+input[31:0] half;
+input[31:0] single;
+output reg[31:0] saida;
+
+always @(MuxLC)
+begin
+
+case(MuxLC)
+2'd0: saida <= full;
+2'd1: saida <= half;
+2'd2: saida <= single;
+endcase
+
+end
+endmodule

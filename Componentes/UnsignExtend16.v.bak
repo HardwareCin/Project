@@ -1,0 +1,9 @@
+module UnsignExtend16 (entrada, saida);
+
+input entrada[15:0];
+output saida[31:0];
+
+assign saida[15:0] = entrada[15:0];
+assign saida[31:16] = 16'd0;
+
+endmodule
