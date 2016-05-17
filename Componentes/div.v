@@ -22,6 +22,7 @@ module div(A, B, DtoC, CtoD, High, Low, Clock, Reset);
 				DtoC<=1;
 			end
 			else begin
+				DtoC<=0;
 				rem=0;
 				quo=0;
 				Counter=30;
@@ -42,7 +43,9 @@ module div(A, B, DtoC, CtoD, High, Low, Clock, Reset);
 			end
 		end
 		if(Counter==-1)begin
-			
+			DtoC<=1;
+			High<=quo;
+			Low<=rem;
 		end
 		else begin
 			rem=rem<<1;
