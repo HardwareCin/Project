@@ -1,4 +1,4 @@
-module div(A, B, DtoC, CtoD, High, Low, Clock, Reset);
+module div(A, B, DtoC, CtoD, High, Low, Clock, Reset, DivZero);
   input [31:0] A;
   input [31:0] B;
   input CtoD;
@@ -15,7 +15,7 @@ module div(A, B, DtoC, CtoD, High, Low, Clock, Reset);
   output reg [31:0] Low;
   output reg DivZero;
   always @(negedge Clock) begin
-	if(reset==0)begin
+	if(Reset==0)begin
 		if(CtoD)begin
 			if(B==32'b0)begin
 				DivZero<=1;
@@ -49,15 +49,13 @@ module div(A, B, DtoC, CtoD, High, Low, Clock, Reset);
 		end
 		else begin
 			rem=rem<<1;
-			rem[0]=Aa[Counter]//not sure
+			rem[0]=Aa[Counter];//not sure
 			if(rem>=Aa)begin
 				rem=rem-Aa;
 				quo[Counter]=1;
 			end
 			Counter=Counter-1;	
 		end		
-	end
-  
-  	
-  end
+	end  	
+end
 endmodule
