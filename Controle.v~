@@ -67,35 +67,13 @@ parameter #sftleft 8'd22;
 parameter #logsftright 8'd23;
 parameter #artsftright 8'd24;
 parameter #shifttoreg 8'd25;
+parameter #jrt 8'd26;
+parameter #calcAD 8'd27;
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+parameter #PCW 8'd32;
 
 
 

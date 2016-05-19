@@ -1,4 +1,4 @@
-module Controle(IorD, shiftCont, divOrMul, zero, writeH, writeL, WEPC, LT, ET, GT, MuxPC, AluOP, AluSrcA, AluSrcB, WriteA, WriteB, RegWrite, Reset, BigMux, IRWrite, MemWrite, muxSC, muxLC, MDST, PCWrite, clock, opCode, DivZero, DtoC, CtoD, MtoC, CtoM, MReg);
+module Controle(IorD, shiftCont, divOrMul, zero, writeH, writeL, WEPC, LT, ET, GT, MuxPC, AluOP, AluSrcA, AluSrcB, WriteA, WriteB, RegWrite, Reset, memToReg, IRWrite, MemWrite, muxSC, muxLC, MDST, PCWrite, clock, opCode, DivZero, DtoC, CtoD, MtoC, CtoM, MReg);
 
 input DtoC;
 input clock;
@@ -21,7 +21,7 @@ output reg MemWrite;//Memoria, 0 lida 1 escrita (DAFUQ)
 output reg IRwrite;
 output reg MReg;
 output reg [2:0] MDST;
-output reg [3:0] BigMux;
+output reg [3:0] memToReg;
 output reg RegWrite;
 output reg WriteA;
 output reg WriteB;
@@ -69,16 +69,21 @@ parameter #artsftright 8'd24;
 parameter #shifttoreg 8'd25;
 parameter #jrt 8'd26;
 parameter #calcAD 8'd27;
-
-
-
-
+parameter #opCodeInexist 8'd28;
+parameter #overflow 8'd29;
+parameter #Sel_rs_rt 8'd30;
+parameter #Write_A_B 8'd31;
 parameter #PCW 8'd32;
-
-
-
-
-
-
-
-
+parameter #SelRegA_Ula 8'd33;
+parameter #Addiu 8'd34;
+parameter #Addi 8'd35;
+parameter #Wdata-AluOut 8'd36;
+parameter #SW 8'd37;
+parameter #Sbyte 8'd38;
+parameter #SHalf 8'd39;
+parameter #SEnd 8'd40;
+parameter #Loads 8'd41;
+parameter #LW 8'd42;
+parameter #LoadByte 8'd43;
+parameter #LoadHalf 8'd44;
+parameter #
