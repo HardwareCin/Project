@@ -1,5 +1,6 @@
 module Controle(IorD, shiftCont, divOrMul, zero, writeH, writeL, WEPC, LT, ET, GT, MuxPC, AluOP, AluSrcA, AluSrcB, WriteA, WriteB, RegWrite, Reset, memToReg, IRWrite, MemWrite, muxSC, muxLC, MDST, PCWrite, clock, opCode, DivZero, DtoC, CtoD, MtoC, CtoM, MReg);
 
+input reset;
 input DtoC;
 input clock;
 input DivZero;
@@ -79,7 +80,7 @@ parameter #PCW 8'd32;
 parameter #SelRegA_Ula 8'd33;
 parameter #Addiu 8'd34;
 parameter #Addi 8'd35;
-parameter #Wdata-AluOut 8'd36;
+parameter #WdataAluOut 8'd36;
 parameter #SW 8'd37;
 parameter #Sbyte 8'd38;
 parameter #SHalf 8'd39;
@@ -108,4 +109,32 @@ parameter #sltiWA 8'd61;
 parameter #sltiSelect 8'd62;
 parameter #sltiOP 8'd63;
 parameter #lui 8'd64;
+parameter #push_1 8'd65;
+parameter #push_2 8'd66;
+parameter #push_3 8'd67;
+parameter #push_4 8'd68;
+parameter #push_5 8'd69;
+parameter #push_6 8'd70;
+parameter #pop_1 8'd71;
+parameter #pop_2 8'd72;
+parameter #pop_3 8'd73;
+parameter #pop_4 8'd74;
+parameter #pop_5 8'd75;
+parameter #pop_6 8'd76;
+parameter #Exc_1 8'd77;
+parameter #Exc_2 8'd78;
+parameter #Exc_3 8'd79;
+parameter #Exc_4 8'd80;
 
+initial begin
+	state<=Reset;
+end
+
+always @ (negedge clock) begin
+	if(reset)begin
+		state<=Reset;
+	end
+	else begin
+		
+	end
+end
