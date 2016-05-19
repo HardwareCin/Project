@@ -1,4 +1,4 @@
-module Controle(IorD, shiftCont, divOrMul, zero, writeH, writeL, WEPC, LT, ET, GT, MuxPC, AluOP, AluSrcA, AluSrcB, WriteA, WriteB, RegWrite, Reset, BigMux, IRWrite, MemWrite, muxSC, muxLC, MDST, PCWrite, clock, opCode, DivZero, DtoC, CtoD, MtoC, CtoM, MReg);
+module Controle(IorD, shiftCont, divOrMul, zero, writeH, writeL, WEPC, LT, ET, GT, MuxPC, AluOP, AluSrcA, AluSrcB, WriteA, WriteB, RegWrite, Reset, memToReg, IRWrite, MemWrite, muxSC, muxLC, MDST, PCWrite, clock, opCode, DivZero, DtoC, CtoD, MtoC, CtoM, MReg);
 
 input DtoC;
 input clock;
@@ -13,6 +13,8 @@ input Reset;
 input AluOFlow;
 input [5:0] Funct;
 
+reg [1:0] branchGamb;
+
 output reg CtoD;
 output reg CtoM;
 output reg PCWrite;
@@ -21,7 +23,7 @@ output reg MemWrite;//Memoria, 0 lida 1 escrita (DAFUQ)
 output reg IRwrite;
 output reg MReg;
 output reg [2:0] MDST;
-output reg [3:0] BigMux;
+output reg [3:0] memToReg;
 output reg RegWrite;
 output reg WriteA;
 output reg WriteB;
@@ -69,16 +71,40 @@ parameter #artsftright 8'd24;
 parameter #shifttoreg 8'd25;
 parameter #jrt 8'd26;
 parameter #calcAD 8'd27;
-
-
-
-
+parameter #opCodeInexist 8'd28;
+parameter #overflow 8'd29;
+parameter #Sel_rs_rt 8'd30;
+parameter #Write_A_B 8'd31;
 parameter #PCW 8'd32;
-
-
-
-
-
-
-
-
+parameter #SelRegA_Ula 8'd33;
+parameter #Addiu 8'd34;
+parameter #Addi 8'd35;
+parameter #Wdata-AluOut 8'd36;
+parameter #SW 8'd37;
+parameter #Sbyte 8'd38;
+parameter #SHalf 8'd39;
+parameter #SEnd 8'd40;
+parameter #Loads 8'd41;
+parameter #LW 8'd42;
+parameter #LoadByte 8'd43;
+parameter #LoadHalf 8'd44;
+parameter #MDRWrite 8'd45;
+parameter #MemToReg 8'd46;
+parameter #MDRWrite 8'd47;
+parameter #WaitBeforeIF 8'd48;
+parameter #j 8'd49;
+parameter #jal 8'd50;
+parameter #rte 8'd51;
+parameter #jal_2 8'd52;
+parameter #Mflo 8'd53;
+parameter #Mfhi 8'd54;
+parameter #break 8'd55;
+parameter #BranchBegin 8'd56;
+parameter #BranchCalc 8'd57;
+parameter #branchSource 8'd58;
+parameter #branchComp 8'd59; 
+parameter #sltiLoad 8'd60;
+parameter #sltiWA 8'd61;
+parameter #sltiSelect 8'd62;
+parameter #sltiOP 8'd63;
+parameter #lui 8'd64;

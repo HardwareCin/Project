@@ -13,6 +13,8 @@ input Reset;
 input AluOFlow;
 input [5:0] Funct;
 
+reg [1:0] branchGamb;
+
 output reg CtoD;
 output reg CtoM;
 output reg PCWrite;
@@ -86,4 +88,24 @@ parameter #Loads 8'd41;
 parameter #LW 8'd42;
 parameter #LoadByte 8'd43;
 parameter #LoadHalf 8'd44;
-parameter #
+parameter #MDRWrite 8'd45;
+parameter #MemToReg 8'd46;
+parameter #MDRWrite 8'd47;
+parameter #WaitBeforeIF 8'd48;
+parameter #j 8'd49;
+parameter #jal 8'd50;
+parameter #rte 8'd51;
+parameter #jal_2 8'd52;
+parameter #Mflo 8'd53;
+parameter #Mfhi 8'd54;
+parameter #break 8'd55;
+parameter #BranchBegin 8'd56;
+parameter #BranchCalc 8'd57;
+parameter #branchSource 8'd58;
+parameter #branchComp 8'd59; 
+parameter #sltiLoad 8'd60;
+parameter #sltiWA 8'd61;
+parameter #sltiSelect 8'd62;
+parameter #sltiOP 8'd63;
+parameter #lui 8'd64;
+
